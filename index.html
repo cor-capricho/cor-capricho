@@ -1,0 +1,825 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cor & Capricho — Pintura e Acabamento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+        }
+        /* Cabeçalho — fundo de ponta a ponta nas laterais */
+        .cabecalho {
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #000000 0%, #0a0a0a 40%, #0f2b5c 70%, #0a3d91 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        /* Logo centralizada */
+        .logo {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+        .logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+        .slogan {
+            color: #ffffff;
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .grupo-botoes-whatsapp {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .botao-whatsapp {
+            background-color: #25d366;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        .botao-whatsapp:hover {
+            transform: scale(1.05);
+        }
+        /* ESTILO SERVIÇOS */
+        .servicos {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .servicos h2 {
+            color: #0f2b5c;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .subtitulo {
+            text-align: center;
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+        .grade-servicos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        .cartao-servico {
+            background: #ffffff;
+            border-left: 4px solid #0f2b5c;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .cartao-servico:hover {
+            transform: translateY(-5px);
+        }
+        .cartao-servico h3 {
+            color: #0f2b5c;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .cartao-servico p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .diferenciais {
+            background: linear-gradient(to right, #0f2b5c, #1a4a9e);
+            color: white;
+            padding: 35px;
+            border-radius: 10px;
+        }
+        .diferenciais h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        .diferenciais ul {
+            list-style: none;
+        }
+        .diferenciais li {
+            padding: 8px 0;
+            font-size: 1.05rem;
+        }
+        /* ESTILO SOBRE NÓS */
+        .sobre {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .sobre h2 {
+            color: #0f2b5c;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .sobre-texto {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+        .sobre-texto p {
+            margin-bottom: 20px;
+        }
+        .destaque {
+            background: linear-gradient(to right, #0f2b5c, #1a4a9e);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 30px;
+            font-size: 1.1rem;
+        }
+        /* === DICAS DE PINTURA === */
+        .dicas {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .dicas h2 {
+            color: #0f2b5c;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .dicas .subtitulo {
+            text-align: center;
+            color: #555;
+            margin-bottom: 40px;
+        }
+        .lista-dicas {
+            display: grid;
+            gap: 25px;
+        }
+        .dica-item {
+            background: #f8fbff;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #1a4a9e;
+        }
+        .dica-item h3 {
+            color: #0f2b5c;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .dica-item p {
+            color: #444;
+            line-height: 1.7;
+        }
+        .chamada {
+            text-align: center;
+            margin-top: 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #0f2b5c;
+        }
+        .chamada a {
+            color: #25d366;
+            text-decoration: none;
+        }
+        /* === AVALIAÇÕES === */
+        .avaliacoes {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .avaliacoes h2 {
+            color: #0f2b5c;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .avaliacoes .subtitulo {
+            text-align: center;
+            color: #555;
+            margin-bottom: 40px;
+        }
+        .grade-avaliacoes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .avaliacao {
+            background: #fff9e8;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .estrelas {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        .avaliacao p {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 12px;
+        }
+        .avaliacao strong {
+            color: #0f2b5c;
+        }
+        /* Formulário de Avaliação */
+        .form-avaliacao {
+            background: #f0f4ff;
+            padding: 35px;
+            border-radius: 12px;
+            border: 2px solid #0f2b5c;
+        }
+        .form-avaliacao h3 {
+            color: #0f2b5c;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+        .estrelas-nota {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 25px;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        .estrela {
+            color: #ccc;
+            transition: color 0.2s ease;
+        }
+        .estrela.ativa {
+            color: #f39c12;
+        }
+        .form-grupo {
+            margin-bottom: 20px;
+        }
+        .form-grupo label {
+            display: block;
+            color: #0f2b5c;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .form-grupo input, .form-grupo textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        .form-grupo textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .botao-enviar {
+            width: 100%;
+            background: #0f2b5c;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .botao-enviar:hover {
+            background: #1a4a9e;
+        }
+        .mensagem-sucesso {
+            display: none;
+            text-align: center;
+            color: green;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8ffe8;
+            border-radius: 8px;
+        }
+        /* === CONTRATO === */
+        .contrato {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .contrato h2 {
+            color: #0f2b5c;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .contrato .subtitulo {
+            text-align: center;
+            color: #555;
+            margin-bottom: 40px;
+        }
+        .caixa-contrato {
+            background: #ffffff;
+            border: 2px solid #0f2b5c;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .cabecalho-contrato {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #1a4a9e;
+        }
+        .cabecalho-contrato p {
+            margin: 5px 0;
+            color: #333;
+        }
+        .contrato h3 {
+            color: #0f2b5c;
+            margin: 25px 0 12px;
+            font-size: 1.1rem;
+        }
+        .lista-contrato {
+            list-style: none;
+            padding-left: 0;
+        }
+        .lista-contrato li {
+            padding: 6px 0;
+            color: #444;
+        }
+        .destaque-texto {
+            background: #f0f4ff;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            font-weight: bold;
+            color: #0f2b5c;
+        }
+        .caixa-concordancia {
+            background: #fff9e8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .caixa-check {
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: #0f2b5c;
+            font-weight: bold;
+        }
+        .caixa-check input {
+            width: 22px;
+            height: 22px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .assinaturas {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 20px;
+        }
+        .assinatura-coluna {
+            flex: 1;
+            text-align: center;
+        }
+        .assinatura-coluna p {
+            margin: 8px 0;
+            color: #444;
+        }
+        .frase-final {
+            margin-top: 35px;
+            padding: 20px;
+            background: linear-gradient(to right, #0f2b5c, #1a4a9e);
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+            font-style: italic;
+        }
+        .botoes-contrato {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .botao-contrato {
+            background: #0f2b5c;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .botao-contrato:hover {
+            background: #1a4a9e;
+        }
+        .botao-pdf {
+            background: #e74c3c;
+        }
+        .botao-pdf:hover {
+            background: #c0392b;
+        }
+        @media print {
+            .botoes-contrato, .form-avaliacao { display: none; }
+        }
+        /* RODAPÉ */
+        .rodape {
+            background: #0f2b5c;
+            color: #ffffff;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+        .conteudo-rodape {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+        .bloco-rodape h3, .bloco-rodape h4 {
+            margin-bottom: 15px;
+            color: #f39c12;
+        }
+        .bloco-rodape p {
+            margin: 8px 0;
+            opacity: 0.9;
+        }
+        .baixo-rodape {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <img src="logo-cor-e-capricho.png" alt="Cor & Capricho — Pintura e Acabamento">
+        </div>
+        
+        <p class="slogan">Sua casa com a cor e o capricho que você merece</p>
+        
+        <div class="grupo-botoes-whatsapp">
+            <a href="https://wa.me/5561984507223" target="_blank" class="botao-whatsapp">
+                💬 WhatsApp 1
+            </a>
+            <a href="https://wa.me/5561984955209" target="_blank" class="botao-whatsapp">
+                💬 WhatsApp 2
+            </a>
+        </div>
+    </header>
+  
+    <main class="conteudo">
+        <!-- SEÇÃO SERVIÇOS -->
+        <section class="servicos">
+            <h2>Nossos Serviços 🖌️</h2>
+            <p class="subtitulo">Tudo que você precisa para deixar seu espaço com a sua cara!</p>
+            
+            <div class="grade-servicos">
+                <div class="cartao-servico">
+                    <h3>🏠 Pintura Residencial</h3>
+                    <p>Casas, apartamentos e quartos. Preparação completa das paredes antes de pintar.</p>
+                </div>
+                <div class="cartao-servico">
+                    <h3>🏢 Pintura Comercial</h3>
+                    <p>Lojas, salas e escritórios. Horários flexíveis para não atrapalhar seu movimento.</p>
+                </div>
+                <div class="cartao-servico">
+                    <h3>🧱 Textura e Acabamento</h3>
+                    <p>Textura rústica, grafiatto e efeitos decorativos que dão um toque especial.</p>
+                </div>
+                <div class="cartao-servico">
+                    <h3>📐 Massa e Reparo</h3>
+                    <p>Nivelamento, massa corrida e conserto de paredes. Tudo pronto para receber a tinta.</p>
+                </div>
+                <div class="cartao-servico">
+                    <h3>🏗️ Pintura de Fachada</h3>
+                    <p>Externa, proteção e renovação. Deixa a frente do seu imóvel sempre bonito e conservado.</p>
+                </div>
+                <div class="cartao-servico">
+                    <h3>✨ Retoques Rápidos</h3>
+                    <p>Pequenos reparos, retoques e ajustes. Aquele detalhe que faltou pra ficar perfeito!</p>
+                </div>
+            </div>
+            <div class="diferenciais">
+                <h3>Por que escolher a Cor & Capricho?</h3>
+                <ul>
+                    <li>✅ Preparação completa antes de pintar</li>
+                    <li>✅ Tinta de qualidade garantida</li>
+                    <li>✅ Limpeza após a obra — nossa gratidão por você!</li>
+                    <li>✅ Pontualidade e respeito ao seu tempo</li>
+                    <li>✅ Orçamento sem compromisso</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SEÇÃO SOBRE NÓS -->
+        <section class="sobre">
+            <h2>Quem Somos 💙</h2>
+            <div class="sobre-conteudo">
+                <div class="sobre-texto">
+                    <p>A <strong>Cor & Capricho</strong> nasceu do amor por transformar ambientes e cuidar de cada detalhe como se fosse nosso próprio lar.</p>
+                    
+                    <p>Somos uma equipe que acredita que a pintura não é só cobrir paredes — é <strong>dar vida, cor e personalidade</strong> aos espaços que fazem parte da sua vida.</p>
+                    
+                    <p>Cada trabalho começa com preparação caprichosa, uso de materiais de qualidade e aquele cuidado especial que você merece. Nada é feito às pressas: <em>fazemos bem feito, porque fazemos com carinho.</em></p>
+                    
+                    <div class="destaque">
+                        <p>🏠 Residencial • Comercial • Fachadas • Acabamentos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DICAS DE PINTURA -->
+        <section class="dicas">
+            <h2>Dicas de Quem Entende 🎨</h2>
+            <p class="subtitulo">Cuidados que fazem sua pintura durar anos</p>
+            <div class="lista-dicas">
+                <div class="dica-item">
+                    <h3>✅ Fundo Preparador: a base que segura tudo</h3>
+                    <p>Antes de qualquer tinta, a parede PRECISA estar bem preparada! Usamos <strong>fundo preparador</strong> em todas as superfícies — ele sela, nivela e dá aderência. Assim a tinta não descasca, não bolha e dura MUITO mais. Pular essa etapa = problema antes do tempo!</p>
+                </div>
+                <div class="dica-item">
+                    <h3>🎨 Tinta de qualidade que dura de verdade</h3>
+                    <p>Não vale a pena economizar na tinta! Tinta reconhecida custa um pouco mais, mas resiste ao sol, à chuva e ao uso diário sem desbotar. Tinta barata descasca em 1 ou 2 anos. As que escolhemos ficam bonitas e protegidas por <strong>5 a 8 anos!</strong></p>
+                </div>
+                <div class="dica-item">
+                    <h3>💰 Preparação completa = dinheiro bem gasto</h3>
+                    <p>Lixar, corrigir, aplicar fundo preparador e só depois pintar — é assim que fazemos! Parede bem cuidada gasta menos tinta e o resultado fica perfeito. Fazer rápido sai caro depois: refazer custa mais do que fazer certo uma vez!</p>
+                </div>
+                <div class="dica-item">
+                    <h3>📋 O que conferir no orçamento</h3>
+                    <p>Confira sempre: preparação + fundo preparador incluso? Marca de tinta? Quantas demãos? Garantia? Valor muito baixo pode estar cortando o preparo — e é ele que segura tudo! Peça nosso orçamento <strong>GRÁTIS</strong> sem compromisso!</p>
+                </div>
+            </div>
+            <p class="chamada">Ficou com dúvida? <a href="https://wa.me/5561984507223">Chama no WhatsApp</a> que te ajudamos! 💙</p>
+        </section>
+
+        <!-- AVALIAÇÕES E COMENTÁRIOS -->
+        <section class="avaliacoes">
+            <h2>O que dizem nossos clientes ⭐</h2>
+            <p class="subtitulo">Satisfação é nossa maior recompensa</p>
+            
+            <div class="grade-avaliacoes" id="lista-avaliacoes">
+                <div class="avaliacao">
+                    <div class="estrelas">⭐⭐⭐⭐⭐</div>
+                    <p>"Preparação impecável! Aplicaram o fundo preparador direitinho e a pintura ficou perfeita. Recomendo de olhos fechados!"</p>
+                    <strong>— Maria, Ceilândia</strong>
+                </div>
+                <div class="avaliacao">
+                    <div class="estrelas">⭐⭐⭐⭐⭐</div>
+                    <p>"Escolheram a tinta certa pra cada ambiente e o resultado impressionou a família toda. Já vi que vai durar anos!"</p>
+                    <strong>— João, Asa Norte</strong>
+                </div>
+                <div class="avaliacao">
+                    <div class="estrelas">⭐⭐⭐⭐⭐</div>
+                    <p>"Orçamento transparente, explicaram tudo. O trabalho ficou limpo, caprichoso e cumpriram o prazo direitinho!"</p>
+                    <strong>— Ana, Taguatinga</strong>
+                </div>
+            </div>
+
+            <div class="form-avaliacao">
+                <h3>Deixe sua avaliação 💬</h3>
+                <p style="text-align:center; color:#555; margin-bottom:20px;">Sua opinião nos ajuda a crescer cada dia!</p>
+                
+                <div class="estrelas-nota" id="nota-estrelas">
+                    <span class="estrela" data-valor="1">⭐</span>
+                    <span class="estrela" data-valor="2">⭐</span>
+                    <span class="estrela" data-valor="3">⭐</span>
+                    <span class="estrela" data-valor="4">⭐</span>
+                    <span class="estrela" data-valor="5">⭐</span>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="nome-avaliacao">Seu nome</label>
+                    <input type="text" id="nome-avaliacao" placeholder="Digite seu nome">
+                </div>
+
+                <div class="form-grupo">
+                    <label for="comentario-avaliacao">Seu comentário</label>
+                    <textarea id="comentario-avaliacao" placeholder="Conte como foi sua experiência com a Cor & Capricho..."></textarea>
+                </div>
+
+                <button class="botao-enviar" id="btn-enviar-avaliacao">✅ Enviar Avaliação</button>
+                
+                <div class="mensagem-sucesso" id="sucesso-avaliacao">
+                    Obrigado! Sua avaliação foi enviada com carinho! 💙
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTRATO -->
+        <section class="contrato">
+            <h2>Contrato de Prestação de Serviços 📋</h2>
+            <p class="subtitulo">Transformando ambientes com carinho e excelência</p>
+
+            <div class="caixa-contrato">
+                <div class="cabecalho-contrato">
+                    <p><strong>Cor & Capricho — Pintura e Acabamento</strong></p>
+                    <p>📞 (61) 98450-7223 | 📱 (61) 98495-5209</p>
+                    <p>📍 Brasília e Região</p>
+                </div>
+
+                <h3>O que fazemos ✅</h3>
+                <ul class="lista-contrato">
+                    <li>✅ Preparação completa das paredes</li>
+                    <li>✅ Aplicação de fundo preparador</li>
+                    <li>✅ Massa corrida e reparos necessários</li>
+                    <li>✅ Pintura com tinta de qualidade reconhecida</li>
+                    <li>✅ Proteção de móveis e objetos</li>
+                    <li>✅ <strong>Limpeza final completa do ambiente</strong> — isso não cobramos! É a nossa forma de agradecer por confiar em nós e entregar um serviço de excelência! 💙✨</li>
+                </ul>
+
+                <h3>Valor e Pagamento 💰</h3>
+                <p>Valor total da obra: <strong>R$ _______________</strong></p>
+                <p><strong>Entrada:</strong> cobramos assim que começarmos a obra, no primeiro dia de serviço</p>
+                <p>Valor restante: combinado por etapas conforme o andamento dos trabalhos</p>
+
+                <h3>Prazo ⏰</h3>
+                <p>Início: ____/____/______ &nbsp;|&nbsp; Término previsto: ____/____/______</p>
+                <p>Se chover forte ou acontecer algo que atrapalhe, ajustamos juntos — sem estresse! 💙</p>
+
+                <h3>Se mudar de ideia 🤝</h3>
+                <p>☐ <strong>Antes de começar:</strong> sem nenhum custo, sem enrolação!</p>
+                <p>☐ <strong>Assim que começarmos a obra:</strong> cobramos a entrada conforme combinado acima</p>
+                <p>☐ <strong>Já iniciado o serviço:</strong> acertamos de forma justa o que já foi realizado e os materiais utilizados</p>
+
+                <h3>Nossa Garantia 🛡️</h3>
+                <p>Garantia de <strong>3 meses</strong> conforme a lei</p>
+                <p><strong>Cobrimos quando aparecer:</strong></p>
+                <ul class="lista-contrato">
+                    <li>⚠️ Bolhas ou descascamento causados pela execução do serviço</li>
+                    <li>⚠️ Descolamento de tinta ou massa aplicada por nós</li>
+                </ul>
+                <p><strong>Não cobrimos:</strong></p>
+                <ul class="lista-contrato">
+                    <li>🌧️ Umidade estrutural do local</li>
+                    <li>💥 Batidas, riscos ou danos causados por terceiros</li>
+                    <li>📉 Desgaste natural com o passar do tempo</li>
+                    <li>🎨 Repintura feita por outras pessoas</li>
+                </ul>
+                <p class="destaque-texto">Se notar qualquer coisa dessas em até 3 meses, é só chamar que resolvemos! 💙</p>
+
+                <div class="caixa-concordancia">
+                    <label class="caixa-check">
+                        <input type="checkbox" id="concordo-contrato">
+                        <span>Li e concordo com tudo descrito acima</span>
+                    </label>
+                </div>
+
+                <div class="assinaturas">
+                    <div class="assinatura-coluna">
+                        <p>___________________________________</p>
+                        <p><strong>Contratante</strong></p>
+                        <p>Nome: ___________________________</p>
+                        <p>Data: ____/____/______</p>
+                    </div>
+                    <div class="assinatura-coluna">
+                        <p>___________________________________</p>
+                        <p><strong>Contratado</strong></p>
+                        <p>Cor & Capricho — Pintura e Acabamento</p>
+                        <p>Data: ____/____/______</p>
+                    </div>
+                </div>
+
+                <div class="frase-final">
+                    <p><em>"Agradecemos de coração por confiar na Cor & Capricho! Não há maior recompensa do que a sua confiança, e trabalhamos todos os dias para merecê-la com excelência, dedicação e aquele carinho que faz toda a diferença. 💙"</em></p>
+                </div>
+
+                <div class="botoes-contrato">
+                    <button class="botao-contrato" onclick="window.print()">🖨️ Imprimir Contrato</button>
+                    <button class="botao-contrato botao-pdf" onclick="salvarPDF()">📄 Salvar em PDF</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="conteudo-rodape">
+            <div class="bloco-rodape">
+                <h3>Cor & Capricho</h3>
+                <p>Transformando ambientes com carinho e qualidade.</p>
+            </div>
+            
+            <div class="bloco-rodape">
+                <h4>Atendimento</h4>
+                <p>📍 Brasília e Região</p>
+                <p>📅 Segunda a Sábado</p>
+            </div>
+            
+            <div class="bloco-rodape">
+                <h4>Contato</h4>
+                <p>📱 (61) 98450-7223</p>
+                <p>📱 (61) 98495-5209</p>
+                <div style="margin-top:10px;">
+                    <a href="https://wa.me/5561984507223" target="_blank" style="color:#25d366; text-decoration:none; font-weight:bold; display:inline-block; margin:5px;">
+                        💬 WhatsApp 1
+                    </a>
+                    <a href="https://wa.me/5561984955209" target="_blank" style="color:#25d366; text-decoration:none; font-weight:bold; display:inline-block; margin:5px;">
+                        💬 WhatsApp 2
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="baixo-rodape">
+            <p>&copy; 2026 Cor & Capricho — Pintura e Acabamento. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- CÓDIGO DAS ESTRELAS, COMENTÁRIOS E PDF -->
+    <script>
+        let notaEscolhida = 0;
+        const estrelas = document.querySelectorAll('#nota-estrelas .estrela');
+        
+        estrelas.forEach(estrela => {
+            estrela.addEventListener('click', () => {
+                notaEscolhida = parseInt(estrela.dataset.valor);
+                atualizarEstrelas();
+            });
+            
+            estrela.addEventListener('mouseover', () => {
+                destacarEstrelas(parseInt(estrela.dataset.valor));
+            });
+        });
+        
+        document.getElementById('nota-estrelas').addEventListener('mouseleave', atualizarEstrelas);
+        
+        function destacarEstrelas(valor) {
+            estrelas.forEach((estrela, indice) => {
+                estrela.classList.toggle('ativa', indice < valor);
+            });
+        }
+        
+        function atualizarEstrelas() {
+            destacarEstrelas(notaEscolhida);
+        }
+        
+        document.getElementById('btn-enviar-avaliacao').addEventListener('click', () => {
+            const nome = document.getElementById('nome-avaliacao').value.trim();
+            const comentario = document.getElementById('comentario-avaliacao').value.trim();
+            
+            if (!nome || !comentario || notaEscolhida === 0) {
+                alert('Por favor, preencha seu nome, escolha as estrelas e escreva seu comentário! 💙');
+                return;
+            }
+            
+            const estrelasTexto = '⭐'.repeat(notaEscolhida);
+            const novaAvaliacao = document.createElement('div');
+            novaAvaliacao.className = 'avaliacao';
+            novaAvaliacao.style.display = 'none';
+            novaAvaliacao.innerHTML = `
+                <div class="estrelas">${estrelasTexto}</div>
+                <p>"${comentario}"</p>
+                <strong>— ${nome}</strong>
+            `;
+            
+            const lista = document.getElementById('lista-avaliacoes');
+            lista.insertBefore(novaAvaliacao, lista.firstChild);
+            novaAvaliacao.style.display = 'block';
+            
+            document.getElementById('nome-avaliacao').value = '';
+            document.getElementById('comentario-avaliacao').value = '';
+            notaEscolhida = 0;
+            atualizarEstrelas();
+            
+            const sucesso = document.getElementById('sucesso-avaliacao');
+            sucesso.style.display = 'block';
+            setTimeout(() => { sucesso.style.display = 'none'; }, 5000);
+        });
+
+        // Função Salvar em PDF
+        function salvarPDF() {
+            alert('📄 Vai abrir a tela de impressão!\n\nEscolha:\n👉 "Salvar como PDF"\nPronto! O contrato será salvo no seu celular ou computador! 💙');
+            window.print();
+        }
+    </script>
+</body>
+</html>
